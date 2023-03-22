@@ -2,72 +2,34 @@
 
 namespace App\Entity;
 
+use App\Repository\TypeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Type
- *
- * @ORM\Table(name="type")
- * @ORM\Entity
- */
+#[ORM\Entity(repositoryClass: TypeRepository::class)]
 class Type
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_type_art", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idTypeArt;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom_type_art", type="string", length=100, nullable=false)
-     */
-    private $nomTypeArt;
+    #[ORM\Column(length: 100)]
+    private ?string $nomType = null;
 
-
-
-
-    /**
-     * @return int
-     */
-    public function getIdTypeArt(): int
+    public function getId(): ?int
     {
-        return $this->idTypeArt;
+        return $this->id;
     }
 
-    /**
-     * @return string
-     */
-    public function getNomTypeArt(): string
+    public function getNomType(): ?string
     {
-        return $this->nomTypeArt;
+        return $this->nomType;
     }
 
-
-
-    /**
-     * @param int $idTypeArt
-     */
-    public function setIdTypeArt(int $idTypeArt): void
+    public function setNomType(string $nomType): self
     {
-        $this->idTypeArt = $idTypeArt;
-    }
+        $this->nomType = $nomType;
 
-    /**
-     * @param string $nomTypeArt
-     */
-    public function setNomTypeArt(string $nomTypeArt): void
-    {
-        $this->nomTypeArt = $nomTypeArt;
-    }
-
-
-
-    public function __toString() {
-        return $this->nomTypeArt . " avec l'id " . $this->idTypeArt;
+        return $this;
     }
 }

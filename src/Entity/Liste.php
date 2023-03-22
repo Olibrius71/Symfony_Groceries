@@ -2,72 +2,34 @@
 
 namespace App\Entity;
 
+use App\Repository\ListeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Liste
- *
- * @ORM\Table(name="liste")
- * @ORM\Entity
- */
+#[ORM\Entity(repositoryClass: ListeRepository::class)]
 class Liste
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id_liste", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idListe;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom_liste", type="string", length=100, nullable=false)
-     */
-    private $nomListe;
+    #[ORM\Column(length: 100)]
+    private ?string $nomListe = null;
 
-
-
-
-
-    /**
-     * @return int
-     */
-    public function getIdListe(): int
+    public function getId(): ?int
     {
-        return $this->idListe;
+        return $this->id;
     }
 
-    /**
-     * @return string
-     */
-    public function getNomListe(): string
+    public function getNomListe(): ?string
     {
         return $this->nomListe;
     }
 
-
-    /**
-     * @param int $idListe
-     */
-    public function setIdListe(int $idListe): void
-    {
-        $this->idListe = $idListe;
-    }
-
-    /**
-     * @param string $nomListe
-     */
-    public function setNomListe(string $nomListe): void
+    public function setNomListe(string $nomListe): self
     {
         $this->nomListe = $nomListe;
-    }
 
-
-
-    public function __toString() {
-        return $this->nomListe . " avec l'id " . $this->idListe;
+        return $this;
     }
 }
