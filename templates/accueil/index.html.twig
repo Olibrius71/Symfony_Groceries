@@ -9,12 +9,13 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>{{ controller_name }}: Wesh Utilisateur!              ╰⋃╯╰⋃╯  🏳️‍🌈⃠ 🏳️‍🌈⃠ 🏳️‍🌈⃠  🏳️‍🌈⃠ 🏳️‍🌈⃠ 🏳️‍🌈⃠ </h1>
 
-    This friendly message is coming from:
+    Bienvenu sur notre site développé en intégralité par Anis BEN JEMIA (avec Tilio CHARRIER qui l'a regardé faire)
     <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/symfonyProject/src/Controller/AccueilController.php'|file_link(0) }}">src/Controller/AccueilController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/symfonyProject/templates/accueil/index.html.twig'|file_link(0) }}">templates/accueil/index.html.twig</a></code></li>
+        <li>Gérer les listes <code><a href="{{ path("app_liste_index") }}">LIEN</a></code></li>
+        <li>Gérer les articles <code><a href="{{ path("app_article_index") }}">LIEN</a></code></li>
+        <li>Gérer les types <code><a href="{{ path("app_type_index") }}">LIEN</a></code></li>
     </ul>
 </div>
 {% endblock %}

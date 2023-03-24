@@ -22,6 +22,14 @@ class Contient
     #[ORM\Column(nullable: true)]
     private ?bool $achete = null;
 
+    #[ORM\ManyToOne(inversedBy: 'contenus')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Liste $listOfContient = null;
+
+    #[ORM\ManyToOne(inversedBy: 'contientsOfArticle')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Article $articleOfContient = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +67,30 @@ class Contient
     public function setAchete(?bool $achete): self
     {
         $this->achete = $achete;
+
+        return $this;
+    }
+
+    public function getListOfContient(): ?Liste
+    {
+        return $this->listOfContient;
+    }
+
+    public function setListOfContient(?Liste $listOfContient): self
+    {
+        $this->listOfContient = $listOfContient;
+
+        return $this;
+    }
+
+    public function getArticleOfContient(): ?Article
+    {
+        return $this->articleOfContient;
+    }
+
+    public function setArticleOfContient(?Article $articleOfContient): self
+    {
+        $this->articleOfContient = $articleOfContient;
 
         return $this;
     }
